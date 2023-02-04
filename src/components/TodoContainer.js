@@ -3,18 +3,31 @@ import { v4 as uuidv4 } from 'uuid';
 import Header from './Header';
 import TodosList from './TodosList';
 import InputTodo from './InputTodo';
-import {
-  FetchLocalStorage,
-  AddToLocalStorage,
-  RemoveFromLocalStorage,
-} from './PersistInLocalStorage';
 
 class TodoContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: FetchLocalStorage(),
+      todos: [],
     };
+  }
+
+  componentDidMount() {
+    const todoList = localStorage.getItem('todoList');
+    const loadedTodos = JSON.parse(todoList);
+    if (loadedTodos) {
+      this.setState({
+        todos: loadedTodos,
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { todos } = this.state;
+    if (prevState.todos !== todos) {
+      const updatedTodos = JSON.stringify(todos);
+      localStorage.setItem('todoList', updatedTodos);
+    }
   }
 
   addTodoItem = (title) => {
@@ -27,7 +40,6 @@ class TodoContainer extends React.Component {
     this.setState({
       todos: [...todos, newTodo],
     });
-    AddToLocalStorage(newTodo);
   };
 
   handleChange = (id) => {
@@ -49,7 +61,6 @@ class TodoContainer extends React.Component {
     this.setState({
       todos: [...todos.filter((todo) => todo.id !== id)],
     });
-    RemoveFromLocalStorage(id);
   };
 
   setUpdate = (updatedTitle, id) => {

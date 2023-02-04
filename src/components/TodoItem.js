@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './TodoItem.module.css';
-import { EditLocalStorage } from './PersistInLocalStorage';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class TodoItem extends React.Component {
@@ -20,8 +19,6 @@ class TodoItem extends React.Component {
   handleUpdatedDone = (event) => {
     if (event.key === 'Enter') {
       this.setState({ editing: false });
-      const { todo } = this.props;
-      EditLocalStorage(todo);
     }
   }
 
