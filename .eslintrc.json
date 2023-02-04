@@ -20,7 +20,9 @@
     "import/no-unresolved": "off",
     "no-shadow": "off",
     "react/require-default-props": "off",
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "no-console":0,
+    "no-param-reassign": 0
   },
   "ignorePatterns": [
     "dist/",
