@@ -1,28 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Header from './Header';
 import TodosList from './TodosList';
 import InputTodo from './InputTodo';
 
 const TodoContainer = () => {
-  const [todos, setTodos] = useState(
-    JSON.parse(localStorage.getItem('todoList')),
-  );
+  const [todos, setTodos] = useState(getInitialTodos());
 
-  // useEffect(() => {
-  //   const fetchTodos = localStorage.getItem('todoList');
-  //   const loadedTodos = JSON.parse(fetchTodos);
+  useEffect(() => {
+    // storing todos items
+    const fetchTodos = JSON.stringify(todos);
+    localStorage.setItem('todoList', fetchTodos);
+  }, [todos]);
 
-  //   if (loadedTodos) {
-  //     if (!todos) {
-  //       setTodos(loadedTodos);
-  //     } else if (loadedTodos !== todos) {
-  //       localStorage.setItem('todoList', JSON.stringify(todos));
-  //     }
-  //   } else {
-  //     localStorage.setItem('todoList', JSON.stringify(todos));
-  //   }
-  // }, [todos]);
+  function getInitialTodos() {
+    // fetching stored items
+    const fetchTodos = localStorage.getItem('todoList');
+    const savedTodos = JSON.parse(fetchTodos);
+    return savedTodos || [];
+  }
 
   const addTodoItem = (title) => {
     const newTodo = {
@@ -35,17 +31,14 @@ const TodoContainer = () => {
   };
 
   const handleChange = (id) => {
-    setTodos((prevState) => {
-      prevState.map((todo) => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }
-        return todo;
-      });
-    });
+    setTodos((prevState) => prevState.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo, completed: !todo.completed,
+        };
+      }
+      return todo;
+    }));
   };
 
   const deleteTodo = (id) => {
