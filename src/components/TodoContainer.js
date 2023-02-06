@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import Navbar from './Navbar';
 import Header from './Header';
 import TodosList from './TodosList';
 import InputTodo from './InputTodo';
@@ -60,18 +61,21 @@ const TodoContainer = () => {
   };
 
   return (
-    <div className="container">
-      <div className="inner">
-        <Header />
-        <InputTodo addTodoProps={addTodoItem} />
-        <TodosList
-          todoList={todos}
-          handleChangeProps={handleChange}
-          deleteTodoProps={deleteTodo}
-          setUpdate={setUpdate}
-        />
+    <>
+      <Navbar />
+      <div className="container">
+        <div className="inner">
+          <Header />
+          <InputTodo addTodoProps={addTodoItem} />
+          <TodosList
+            todoList={todos}
+            handleChangeProps={handleChange}
+            deleteTodoProps={deleteTodo}
+            setUpdate={setUpdate}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

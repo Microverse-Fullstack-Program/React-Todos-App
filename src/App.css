@@ -66,14 +66,7 @@ body {
   border: none;
 }
 
-.active-link {
-  color: orangered;
-  text-decoration: underline;
-  font-weight: bold;
-}
-
 /* sidebar Nav */
-
 .navBar {
   position: relative;
 }

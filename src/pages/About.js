@@ -1,22 +1,26 @@
 import React from 'react';
-import { NavLink, useRouteMatch, Route } from 'react-router-dom';
+import {
+  NavLink,
+  Route,
+  Routes,
+} from 'react-router-dom';
 import SinglePage from './SinglePage';
 
 const About = () => {
-  const { url, path } = useRouteMatch();
+  const path = '/about';
   return (
     <div className="about__content">
       <ul className="about__list">
         <li>
-          <NavLink to={`${url}/about-app`}>About App</NavLink>
+          <NavLink to={`${path}/about-app`}>About App</NavLink>
         </li>
         <li>
-          <NavLink to={`${url}/about-author`}>About Author</NavLink>
+          <NavLink to={`${path}/about-author`}>About Author</NavLink>
         </li>
       </ul>
-      <Route path={`${path}/:slug`}>
-        <SinglePage />
-      </Route>
+      <Routes>
+        <Route path={`${path}/:slug`} element={<SinglePage />} />
+      </Routes>
     </div>
   );
 };

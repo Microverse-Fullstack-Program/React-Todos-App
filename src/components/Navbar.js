@@ -27,6 +27,18 @@ const Navbar = () => {
     setNavbarOpen(false);
   };
 
+  const activeNavLink = ({ isActive }) => {
+    if (isActive) {
+      const activeLink = {
+        fontWeight: 'bold',
+        textDecoration: 'underline',
+        color: '#ff4500',
+      };
+      return activeLink;
+    }
+    return null;
+  };
+
   return (
     <nav className="navBar">
       <button type="button" onClick={handleToggle}>
@@ -42,9 +54,8 @@ const Navbar = () => {
           <li key={link.id}>
             <NavLink
               to={link.path}
-              activeClassName="active-link"
+              style={activeNavLink}
               onClick={() => closeMenu()}
-              exact
             >
               {link.text}
             </NavLink>
