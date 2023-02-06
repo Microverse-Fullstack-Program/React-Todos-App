@@ -25,7 +25,7 @@ body {
 
 .inner {
   width: 100%;
-  padding: 2rem 10px 4rem;
+  padding: 8rem 10px 4rem;
 }
 
 .form-container {
@@ -114,7 +114,6 @@ a {
 }
 
 /* about page */
-
 .about__content {
   padding: 8rem 40px;
   display: flex;
