@@ -1,10 +1,8 @@
 import React from 'react';
 import {
   NavLink,
-  Route,
-  Routes,
+  Outlet,
 } from 'react-router-dom';
-import SinglePage from './SinglePage';
 
 const About = () => {
   const path = '/about';
@@ -18,9 +16,7 @@ const About = () => {
           <NavLink to={`${path}/about-author`}>About Author</NavLink>
         </li>
       </ul>
-      <Routes>
-        <Route path={`${path}/:slug`} element={<SinglePage />} />
-      </Routes>
+      <Outlet />
     </div>
   );
 };
