@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-    <img src="todo-app.gif" alt="logo" width="500"  height="300" />
+    <img src="todo-app.gif" alt="logo" width="900"  height="300" />
   <br/>
 
   <h3><b>Todo App Using React </b></h3>
