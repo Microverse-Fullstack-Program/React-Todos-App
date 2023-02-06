@@ -11,11 +11,11 @@ const Header = () => {
     <header style={headerStyle}>
       <h1
         style={{
-          fontSize: '6rem',
-          fontWeight: '600',
-          marginBottom: '2rem',
+          fontSize: '5rem',
+          fontWeight: '500',
+          marginBottom: '1rem',
           lineHeight: '1em',
-          color: '#ececec',
+          color: '#686767',
           textTransform: 'lowercase',
           textAlign: 'center',
         }}
